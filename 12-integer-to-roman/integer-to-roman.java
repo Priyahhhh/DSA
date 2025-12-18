@@ -1,14 +1,27 @@
 class Solution {
     public String intToRoman(int num) {
 
-        String[] t = {"", "M", "MM", "MMM"};
-        String[] h = {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"};
-        String[] te = {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"};
-        String[] o = {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
+        int[] values = {
+            1000, 900, 500, 400,
+            100, 90, 50, 40,
+            10, 9, 5, 4, 1
+        };
 
-        return t[num / 1000]
-             + h[(num % 1000) / 100]
-             + te[(num % 100) / 10]
-             + o[num % 10];
+        String[] symbols = {
+            "M", "CM", "D", "CD",
+            "C", "XC", "L", "XL",
+            "X", "IX", "V", "IV", "I"
+        };
+
+        String result = "";
+
+        for (int i = 0; i < values.length; i++) {
+            while (num >= values[i]) {
+                num -= values[i];
+                result += symbols[i];
+            }
+        }
+
+        return result;
     }
 }
