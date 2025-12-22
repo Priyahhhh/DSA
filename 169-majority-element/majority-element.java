@@ -3,12 +3,12 @@ class Solution {
         int count = 0;
         int candidate = 0;
 
-        for (int i = 0; i < nums.length; i++) {
+        for (int num : nums) {
             if (count == 0) {
-                candidate = nums[i];
+                candidate = num;
             }
 
-            if (nums[i] == candidate) {
+            if (num == candidate) {
                 count++;
             } else {
                 count--;
